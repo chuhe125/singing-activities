@@ -179,9 +179,12 @@ class AdminController extends Controller
     {
         $id = $request['id'];
         $red = UsersLogin::where('id',$id)->delete();
+        $res = DB::table('jurisdiction')->where('u_login_id',$id)->delete();
+        $date['red'] = $red;
+        $date['res'] = $res;
         return $red ?
-            json_success('更改成功!', $red, 200) :
-            json_fail('更改失败!', null, 100);
+            json_success('删除成功!', $red, 200) :
+            json_fail('删除失败!', null, 100);
     }
     /**
      * 根据姓名查询权限与账号
