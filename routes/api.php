@@ -70,7 +70,7 @@ Route::prefix('province')->group(function (){
     Route::post('delete','Login\AdminController@delete');  //删除学校
     Route::post('find','Login\AdminController@find');  //根据名称查询学校
 });//--wzh
-=======
+
  * 市级模块
  */
 Route::prefix('city')->group(function () {
@@ -82,7 +82,17 @@ Route::prefix('city')->group(function () {
     Route::post('enrollAllBack', 'City\Controllers\CityController@EnrollAllBack'); //一键驳回
 });
 
-=======
+/**
+ * lyt
+ */
+Route::prefix('student')->group(function () {
+    Route::post('ShowDetails','StudentController@ShowDetails'); //查看细节
+    Route::post('updateChuan','StudentController@updateChuan'); //更新传唱
+    Route::post('updateYuan','StudentController@updateYuan'); //更新原厂
+    Route::get('ShowAll','StudentController@ShowAll'); //查看所有
+    Route::get('ShowAllCName','StudentController@ShowAllCName'); //查看传唱的作品名称
+});
+
 /**
  * csl
  */
@@ -97,5 +107,6 @@ Route::prefix('province')->group(function () {
     Route::post('inquire','ProvinceController@Inquire');//根据学校名查询
     Route::get('look','ProvinceController@Look');//审批记录
 });
+
 
 
